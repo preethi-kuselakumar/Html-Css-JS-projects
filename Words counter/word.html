@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <link rel="stylesheet" href="word.css">
+</head>
+<body>
+    <div id="counter">
+        <textarea id="input" placeholder="Type or paste your text here..."></textarea>
+        <button id="btn">Count Words</button>
+        <p id="count">Word Count: 0</p>
+    </div>
+
+    <script>
+
+        document.getElementById("btn").addEventListener("click", function() {
+            let text = document.getElementById("input").value;
+            let wordCount = countWords(text);
+            document.getElementById("count").innerText = `Word Count: ${wordCount}`;
+        });
+
+        function countWords(text) {
+            // Trim the text to remove extra spaces at the beginning and end
+            text = text.trim();
+            
+            // Check if text is empty
+            if (text === "") {
+                return 0;
+            }
+
+            // Split the text by spaces to get the words
+            let words = text.split(/\s+/);
+            return words.length;
+        }
+        
+    </script>
+</body>
+</html>
